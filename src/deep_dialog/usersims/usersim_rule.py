@@ -391,7 +391,6 @@ class RuleSimulator(UserSimulator):
                             request_slot = random.choice(request_set)
                         else:
                             request_slot = 'ticket'
-
                         self.state['request_slots'][request_slot] = "UNK"
                         self.state['diaact'] = "request"
                     elif len(self.state['rest_slots']) > 0:
