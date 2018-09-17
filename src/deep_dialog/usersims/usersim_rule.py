@@ -19,7 +19,6 @@ from deep_dialog.usersims.usersim import UserSimulator
 from deep_dialog import dialog_config
 
 
-
 class RuleSimulator(UserSimulator):
     """ A rule-based user simulator for testing dialog policy """
     
@@ -40,7 +39,8 @@ class RuleSimulator(UserSimulator):
         self.simulator_act_level = params['simulator_act_level']
         
         self.learning_phase = params['learning_phase']
-    
+
+
     def initialize_episode(self):
         """ Initialize a new episode (dialog) 
         state['history_slots']: keeps all the informed_slots
@@ -68,8 +68,8 @@ class RuleSimulator(UserSimulator):
         # sample first action
         user_action = self._sample_action()
         assert (self.episode_over != 1),' but we just started'
-        return user_action  
-        
+        return user_action
+
     def _sample_action(self):
         """ randomly sample a start action based on user goal """
         
@@ -114,7 +114,8 @@ class RuleSimulator(UserSimulator):
         
         self.add_nl_to_action(sample_action)
         return sample_action
-    
+
+
     def _sample_goal(self, goal_set):
         """ sample a user goal  """
         
@@ -150,7 +151,8 @@ class RuleSimulator(UserSimulator):
         intent_err_sample = random.random()
         if intent_err_sample < self.intent_err_probability: # add noise for intent level
             user_action['diaact'] = random.choice(list(self.act_set.keys()))
-    
+
+
     def debug_falk_goal(self):
         """ Debug function: build a fake goal mannually (Can be moved in future) """
         
@@ -167,7 +169,8 @@ class RuleSimulator(UserSimulator):
         self.goal['request_slots']['theater'] = 'UNK'
         self.goal['request_slots']['starttime'] = 'UNK'
         self.goal['request_slots']['date'] = 'UNK'
-        
+
+
     def next(self, system_action):
         """ Generate next User Action based on last System Action """
         
@@ -211,8 +214,8 @@ class RuleSimulator(UserSimulator):
         # add NL to dia_act
         self.add_nl_to_action(response_action)                       
         return response_action, self.episode_over, self.dialog_status
-    
-    
+
+
     def response_confirm_answer(self, system_action):
         """ Response for Confirm_Answer (System Action) """
     
@@ -229,7 +232,8 @@ class RuleSimulator(UserSimulator):
                     self.state['rest_slots'].remove(request_slot)
         else:
             self.state['diaact'] = "thanks"
-            
+
+
     def response_thanks(self, system_action):
         """ Response for Thanks (System Action) """
         
@@ -259,7 +263,8 @@ class RuleSimulator(UserSimulator):
                 
         if self.constraint_check == dialog_config.CONSTRAINT_CHECK_FAILURE:
             self.dialog_status = dialog_config.FAILED_DIALOG
-    
+
+
     def response_request(self, system_action):
         """ Response for Request (System Action) """
         
@@ -418,12 +423,9 @@ class RuleSimulator(UserSimulator):
                         self.state['diaact'] = "thanks" # or replies "confirm_answer"
         
 
-
-
 def main(params):
     user_sim = RuleSimulator()
     user_sim.initialize_episode()
-
 
 
 if __name__ == "__main__":
