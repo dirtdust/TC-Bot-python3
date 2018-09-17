@@ -22,7 +22,6 @@ class Agent:
         self.slot_set = slot_set
         self.act_cardinality = len(act_set.keys())
         self.slot_cardinality = len(slot_set.keys())
-        
         self.epsilon = params['epsilon']
         self.agent_run_mode = params['agent_run_mode']
         self.agent_act_level = params['agent_act_level']
@@ -35,6 +34,7 @@ class Agent:
         self.current_action['inform_slots'] = {}
         self.current_action['request_slots'] = {}
         self.current_action['turn'] = 0
+
 
     def state_to_action(self, state, available_actions):
         """ Take the current state and return an action according to the current exploration/exploitation policy
@@ -76,14 +76,12 @@ class Agent:
         self.nlg_model = nlg_model  
 
 
-
     def set_nlu_model(self, nlu_model):
         self.nlu_model = nlu_model
      
        
     def add_nl_to_action(self, agent_action):
         """ Add NL to Agent Dia_Act """
-        
         if agent_action['act_slot_response']:
             agent_action['act_slot_response']['nl'] = ""
             user_nlg_sentence = self.nlg_model.convert_diaact_to_nl(agent_action['act_slot_response'], 'agt') #self.nlg_model.translate_diaact(agent_action['act_slot_response']) # NLG
