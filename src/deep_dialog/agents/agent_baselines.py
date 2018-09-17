@@ -22,6 +22,7 @@ class InformAgent(Agent):
         self.state['turn'] = -1
         self.current_slot_id = 0
 
+
     def state_to_action(self, state):
         """ Run current policy on state and produce an action """
         
@@ -38,7 +39,6 @@ class InformAgent(Agent):
         else:
             act_slot_response = {'diaact': "thanks", 'inform_slots': {}, 'request_slots': {}, 'turn': self.state['turn']}
         return {'act_slot_response': act_slot_response, 'act_slot_value_response': None}
-
 
 
 class RequestAllAgent(Agent):
@@ -68,7 +68,6 @@ class RequestAllAgent(Agent):
         else:
             act_slot_response = {'diaact': "thanks", 'inform_slots': {}, 'request_slots': {}, 'turn': self.state['turn']}
         return {'act_slot_response': act_slot_response, 'act_slot_value_response': None}
-
 
 
 class RandomAgent(Agent):
@@ -139,6 +138,7 @@ class RequestBasicsAgent(Agent):
         self.current_slot_id = 0
         self.request_set = ['moviename', 'starttime', 'city', 'date', 'theater', 'numberofpeople']
         self.phase = 0
+
 
     def state_to_action(self, state):
         """ Run current policy on state and produce an action """

@@ -15,7 +15,7 @@ class SeqToSeq:
     def get_struct(self):
         return {'model': self.model, 'update': self.update, 'regularize': self.regularize}
     
-    
+
     """ Forward Function"""
     def fwdPass(self, Xs, params, **kwargs):
         pass
@@ -70,10 +70,8 @@ class SeqToSeq:
             maxes = np.amax(Y, axis=1, keepdims=True)
             e = np.exp(Y - maxes) # for numerical stability shift into good numerical range
             P = e/np.sum(e, axis=1, keepdims=True)
-            
             # Cross-Entropy Cross Function
             loss_cost += -np.sum(np.log(smooth_cost + P[range(len(labels)), labels]))
-            
             for iy,y in enumerate(labels):
                 P[iy,y] -= 1 # softmax derivatives
             dYs.append(P)

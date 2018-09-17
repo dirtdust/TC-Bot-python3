@@ -18,6 +18,7 @@ def unique_states(training_data):
             unique.append(datum[0].copy())
     return unique
 
+
 def contains(unique, candidate_state):
     for state in unique:
         if np.array_equal(state, candidate_state):

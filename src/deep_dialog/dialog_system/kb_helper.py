@@ -78,6 +78,7 @@ class KBHelper:
                 else: slot_values[slot_val] = 1
         return slot_values
 
+
     def available_results_from_kb(self, current_slots):
         """ Return the available movies in the movie_kb based on the current constraints """
         
@@ -132,7 +133,8 @@ class KBHelper:
 
         ret_result = dict(ret_result)
         return ret_result
-    
+
+
     def available_results_from_kb_for_slots(self, inform_slots):
         """ Return the count statistics for each constraint in inform_slots """
         
@@ -170,7 +172,8 @@ class KBHelper:
         database_results ={} # { date:100, distanceconstraints:60, theater:30,  matching_all_constraints: 5}
         database_results = self.available_results_from_kb_for_slots(current_slots['inform_slots'])
         return database_results
-    
+
+
     def suggest_slot_values(self, request_slots, current_slots):
         """ Return the suggest slot values """
         

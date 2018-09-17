@@ -166,7 +166,8 @@ class AgentDQN(Agent):
 
         self.final_representation = np.hstack([user_act_rep, user_inform_slots_rep, user_request_slots_rep, agent_act_rep, agent_inform_slots_rep, agent_request_slots_rep, current_slots_rep, turn_rep, turn_onehot_rep, kb_binary_rep, kb_count_rep])
         return self.final_representation
-      
+
+
     def run_policy(self, representation):
         """ epsilon-greedy policy """
         
@@ -179,7 +180,8 @@ class AgentDQN(Agent):
                 return self.rule_policy()
             else:
                 return self.dqn.predict(representation, {}, predict_model=True)
-    
+
+
     def rule_policy(self):
         """ Rule Policy """
         
@@ -198,7 +200,8 @@ class AgentDQN(Agent):
             act_slot_response = {'diaact': "thanks", 'inform_slots': {}, 'request_slots': {} }
                 
         return self.action_index(act_slot_response)
-    
+
+
     def action_index(self, act_slot_response):
         """ Return the index of action """
         
@@ -224,7 +227,8 @@ class AgentDQN(Agent):
                 self.experience_replay_pool.append(training_example)
         else: # Prediction Mode
             self.experience_replay_pool.append(training_example)
-    
+
+
     def train(self, batch_size=1, num_batches=100):
         """ Train DQN with experience replay """
         
@@ -250,7 +254,8 @@ class AgentDQN(Agent):
         except Exception as e:
             print ('Error: Writing model fails: %s' % (path, ))
             print (e)
-    
+
+
     def load_experience_replay_from_file(self, path):
         """ Load the experience replay pool from a file"""
         

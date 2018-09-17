@@ -110,7 +110,8 @@ class AgentCmd(Agent):
                             act_slot_value_response['inform_slots'][annot_slot] = annot_val
         
         return act_slot_value_response
-    
+
+
     def generate_diaact_from_nl(self, string):
         """ Generate Dia_Act Form with NLU """
         
@@ -124,7 +125,8 @@ class AgentCmd(Agent):
         
         agent_action['nl'] = string 
         return agent_action
-    
+
+
     def add_nl_to_action(self, agent_action):
         """ Add NL to Agent Dia_Act """
         
