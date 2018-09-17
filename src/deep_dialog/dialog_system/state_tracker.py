@@ -84,8 +84,7 @@ class StateTracker:
                  'kb_results_dict':self.kb_helper.database_results_for_agent(self.current_slots), 'turn': self.turn_count, 'history': self.history_dictionaries, 
                  'agent_action': self.history_dictionaries[-2] if len(self.history_dictionaries) > 1 else None}
         return copy.deepcopy(state)
-
-
+    
     def get_suggest_slots_values(self, request_slots):
         """ Get the suggested values for request slots """
         
@@ -94,14 +93,13 @@ class StateTracker:
             suggest_slot_vals = self.kb_helper.suggest_slot_values(request_slots, self.current_slots)
         
         return suggest_slot_vals
-
-
+    
     def get_current_kb_results(self):
         """ get the kb_results for current state """
         kb_results = self.kb_helper.available_results_from_kb(self.current_slots)
         return kb_results
-
-
+    
+    
     def update(self, agent_action=None, user_action=None):
         """ Update the state based on the latest action """
 

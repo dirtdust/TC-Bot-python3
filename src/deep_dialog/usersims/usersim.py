@@ -20,6 +20,7 @@ class UserSimulator:
         self.act_set = act_set
         self.slot_set = slot_set
         self.start_set = start_set
+        
         self.max_turn = params['max_turn']
         self.slot_err_probability = params['slot_err_probability']
         self.slot_err_mode = params['slot_err_mode']
@@ -39,16 +40,17 @@ class UserSimulator:
 
     def next(self, system_action):
         pass
-
-
+    
+    
+    
     def set_nlg_model(self, nlg_model):
         self.nlg_model = nlg_model  
-
-
+    
     def set_nlu_model(self, nlu_model):
         self.nlu_model = nlu_model
-
-
+    
+    
+    
     def add_nl_to_action(self, user_action):
         """ Add NL to User Dia_Act """
         

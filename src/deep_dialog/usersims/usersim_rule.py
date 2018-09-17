@@ -19,6 +19,7 @@ from deep_dialog.usersims.usersim import UserSimulator
 from deep_dialog import dialog_config
 
 
+
 class RuleSimulator(UserSimulator):
     """ A rule-based user simulator for testing dialog policy """
     
@@ -68,8 +69,7 @@ class RuleSimulator(UserSimulator):
         user_action = self._sample_action()
         assert (self.episode_over != 1),' but we just started'
         return user_action  
-
-
+        
     def _sample_action(self):
         """ randomly sample a start action based on user goal """
         
@@ -114,8 +114,7 @@ class RuleSimulator(UserSimulator):
         
         self.add_nl_to_action(sample_action)
         return sample_action
-
-
+    
     def _sample_goal(self, goal_set):
         """ sample a user goal  """
         
