@@ -72,7 +72,8 @@ class DQN:
             cache['Y'] = Y
             
         return Y, cache
-    
+
+
     def bwdPass(self, dY, cache):
         Wd = cache['Wd']
         H = cache['H']
@@ -109,8 +110,8 @@ class DQN:
         dXs = dXsh.dot(Wxh.transpose())
         
         return {'Wd': dWd, 'bd': dbd, 'Wxh':dWxh, 'bxh':dbxh}
-    
-    
+
+
     """batch Forward & Backward Pass"""
     def batchForward(self, batch, params, predict_mode = False):
         caches = []
@@ -128,7 +129,8 @@ class DQN:
             cache['caches'] = caches
 
         return Ys, cache
-    
+
+
     def batchDoubleForward(self, batch, params, clone_dqn, predict_mode = False):
         caches = []
         Ys = []
@@ -151,7 +153,8 @@ class DQN:
             cache['caches'] = caches
 
         return Ys, cache, tYs
-    
+
+
     def batchBackward(self, dY, cache):
         caches = cache['caches']
         

@@ -41,16 +41,15 @@ class UserSimulator:
     def next(self, system_action):
         pass
     
-    
-    
+
     def set_nlg_model(self, nlg_model):
-        self.nlg_model = nlg_model  
-    
+        self.nlg_model = nlg_model
+
+
     def set_nlu_model(self, nlu_model):
         self.nlu_model = nlu_model
-    
-    
-    
+
+
     def add_nl_to_action(self, user_action):
         """ Add NL to User Dia_Act """
         

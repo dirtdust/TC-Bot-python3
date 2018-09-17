@@ -35,6 +35,7 @@ def load_performance_file(path):
             numbers['ave_rewards'].append(data['ave_reward'][str(key)])
     return numbers
 
+
 def draw_learning_curve(numbers):
     """ draw the learning curve """
     
@@ -45,9 +46,8 @@ def draw_learning_curve(numbers):
 
     plt.plot(numbers['x'], numbers['success_rate'], 'r', lw=1)
     plt.show()
-            
-    
-            
+
+
 def main(params):
     cmd = params['cmd']
     

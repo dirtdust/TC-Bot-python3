@@ -29,7 +29,8 @@ class biLSTM(SeqToSeq):
         self.regularize = ['WLSTM', 'bWLSTM', 'Wd', 'bWd']
 
         self.step_cache = {}
-        
+
+
     """ Activation Function: Sigmoid, or tanh, or ReLu """
     def fwdPass(self, Xs, params, **kwargs):
         predict_mode = kwargs.get('predict_mode', False)
@@ -125,7 +126,8 @@ class biLSTM(SeqToSeq):
             cache['Ws'] = Ws
             
         return Y, cache
-    
+
+
     """ Backward Pass """
     def bwdPass(self, dY, cache):
         Wd = cache['Wd']
