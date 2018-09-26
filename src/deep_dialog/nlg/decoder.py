@@ -73,8 +73,8 @@ class decoder:
             # Cross-Entropy Cross Function
             loss_cost += -np.sum(np.log(smooth_cost + P[range(len(labels)), labels]))
             
-            for iy,y in enumerate(labels):
-                P[iy,y] -= 1 # softmax derivatives
+            for iy, y in enumerate(labels):
+                P[iy, y] -= 1 # softmax derivatives
             dYs.append(P)
             
         # backprop the RNN
@@ -92,7 +92,8 @@ class decoder:
         batch_size = len(batch)
         reg_cost /= batch_size
         loss_cost /= batch_size
-        for k in grads: grads[k] /= batch_size
+        for k in grads:
+            grads[k] /= batch_size
 
         out = {}
         out['cost'] = {'reg_cost' : reg_cost, 'loss_cost' : loss_cost, 'total_cost' : loss_cost + reg_cost}

@@ -43,7 +43,7 @@ class SeqToSeq:
     def batchBackward(self, dY, cache):
         caches = cache['caches']
         grads = {}
-        for i in xrange(len(caches)):
+        for i in range(len(caches)):
             single_cache = caches[i]
             local_grads = self.bwdPass(dY[i], single_cache)
             mergeDicts(grads, local_grads) # add up the gradients wrt model parameters
@@ -62,7 +62,7 @@ class SeqToSeq:
         smooth_cost = 1e-15
         dYs = []
         
-        for i,x in enumerate(batch):
+        for i, x in enumerate(batch):
             labels = np.array(x['tags_rep'], dtype=int)
             
             # fetch the predicted probabilities
@@ -72,8 +72,8 @@ class SeqToSeq:
             P = e/np.sum(e, axis=1, keepdims=True)
             # Cross-Entropy Cross Function
             loss_cost += -np.sum(np.log(smooth_cost + P[range(len(labels)), labels]))
-            for iy,y in enumerate(labels):
-                P[iy,y] -= 1 # softmax derivatives
+            for iy, y in enumerate(labels):
+                P[iy, y] -= 1 # softmax derivatives
             dYs.append(P)
             
         # backprop the RNN
