@@ -1,2 +1,2 @@
 This repository is cloned from other's, and I am using python3 to rewrite
-this project. test
+this project.
